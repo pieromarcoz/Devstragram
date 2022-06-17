@@ -49,5 +49,5 @@ Perfil: {{ $user->username }}
         <p class="text-gray-600 uppercase text-sm text-center font-bold">No hay Publicaciones</p>
     @endif
 </section>
-e
+
 @endsection
