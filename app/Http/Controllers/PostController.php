@@ -14,8 +14,8 @@ class PostController extends Controller
         !$this->middleware('auth')->except('show', 'index');
     }
     public function index(User $user){
-        $posts = Post::where('user_id', $user->id)->paginate(5);
-        
+        $posts = Post::where('user_id', $user->id)->latest()->paginate(5);
+
 
         return view('dashboard', [
             'user' => $user,
@@ -40,9 +40,9 @@ class PostController extends Controller
 
         // Otra forma
         // $post = new Post;
-        // $post->titulo = $request->titulo; 
-        // $post->descripcion = $request->descripcion; 
-        // $post->imagen = $request->imagen; 
+        // $post->titulo = $request->titulo;
+        // $post->descripcion = $request->descripcion;
+        // $post->imagen = $request->imagen;
         // $post->user_id = auth()->user()->id;
         // $post->save();
 
