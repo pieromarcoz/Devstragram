@@ -8,6 +8,7 @@
     <title>DevStagram - @yield('titulo')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
+    @livewireStyles
 </head>
 <body class="bg-gray-100">
     <header class="p-5 border-b bg-white shadow">
@@ -16,7 +17,7 @@
 
             @auth
                 <nav class="flex gap-2 items-center">
-                    <a 
+                    <a
                     class="flex items-center gap-2 bg-white p-2 border text-gray-600 rounded text-sm uppercase font-bold cursor-pointer"
                     href="{{ route('posts.create') }}"
                     >
@@ -27,7 +28,7 @@
                         Crear
                     </a>
                     <a class="font-bold text-gray-600" href="{{ route('posts.index', auth()->user()->username) }}">
-                        Hola: 
+                        Hola:
                         <span class="font-normal">
                             {{ Auth::user()->username }}
                         </span>
@@ -55,10 +56,10 @@
         </h2>
         @yield('contenido')
     </main>
-    
+
     <footer class="text-center p-5 text-gray-500 font-bold uppercase mt-10">
         DevStagram - Todos los derechos reservados {{ now()->year }}
     </footer>
-    
+@livewireScripts
 </body>
 </html>

@@ -10,31 +10,28 @@
         <img src="{{ asset('uploads') . '/' . $post->imagen }}" alt="Imagen del post {{ $post->titulo }}">
         <div class="p-3 flex items-center gap-4 ">
             @auth
-            @if ($post->checkLike(auth()->user()))
-            <form action="{{ route('posts.likes.destroy', $post) }}" method="POST">
-                @method('DELETE')
-                @csrf
-                <div class="my-4">
-                    <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="red" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
-                </div>
-            </form>
-            @else
-            <form action="{{ route('posts.likes.store', $post) }}" method="POST">
-                @csrf
-                <div class="my-4">
-                    <button type="submit">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
-                </div>
-            </form>
-            @endif
-            
+                <livewire:like-post :post="$post"/>
+{{--            @if ($post->checkLike(auth()->user()))--}}
+{{--            <form action="{{ route('posts.likes.destroy', $post) }}" method="POST">--}}
+{{--                @method('DELETE')--}}
+{{--                @csrf--}}
+{{--                <div class="my-4">--}}
+
+{{--                </div>--}}
+{{--            </form>--}}
+{{--            @else--}}
+{{--            <form action="{{ route('posts.likes.store', $post) }}" method="POST">--}}
+{{--                @csrf--}}
+{{--                <div class="my-4">--}}
+{{--                    <button type="submit">--}}
+{{--                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="white" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">--}}
+{{--                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />--}}
+{{--                      </svg>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </form>--}}
+{{--            @endif--}}
+
             @endauth
             <p>{{ $post->likes->count() }} <span class="font-normal">Likes</span></p>
         </div>
@@ -52,18 +49,18 @@
         <form action="{{ route('posts.destroy', $post) }}" method="post">
             @method('DELETE')
             @csrf
-            <input type="submit" value="Eliminar Publicacion" 
+            <input type="submit" value="Eliminar Publicacion"
             class="bg-red-500 hover:bg-red-600 p-2 rounded text-white font-bold mt-4 cursor-pointer">
-        </form>    
+        </form>
         @endif
         @endauth
-        
+
     </div>
     <div class="md:w-1/2 p-5">
         <div class="shadow bg-white p-5 mb-5">
 
             @auth
-                
+
 
             <p class="text-xl font-bold text-center mb-4">Agrega un nuevo Comentario</p>
             @if (session('mensaje'))
@@ -81,7 +78,7 @@
                     <textarea id="comentario" name="comentario" placeholder="Agrega un comentario"
                         class="border p-3 w-full rounded-lg @error('comentario') border-red-500 @enderror"></textarea>
                     @error('comentario')
-                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 
+                    <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2
                         text-center">{{ $message }}</p>
                     @enderror
                 </div>
