@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('titulo')
-    Página Princpal
+    Página Principal
 @endsection
 
 @section('contenido')
-    Contenido Página Princpal
+    Contenido Página Principal
 @endsection
