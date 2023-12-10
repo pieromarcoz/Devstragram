@@ -13,7 +13,7 @@ Inicia Sesión en DevStagram
         <form method="post" action="{{ route('login') }}" novalidate>
             @csrf
             @if(session('mensaje'))
-            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 
+            <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2
             text-center">{{ session('mensaje') }}</p>
             @endif
             <div class="mb-5">
@@ -24,7 +24,7 @@ Inicia Sesión en DevStagram
                     class="border p-3 w-full rounded-lg  @error('email') border-red-500 @enderror"
                     value="{{ old('email' )}}">
                 @error('email')
-                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2
             text-center">{{ $message }}</p>
                 @enderror
             </div>
@@ -35,12 +35,13 @@ Inicia Sesión en DevStagram
                 <input type="password" id="password" name="password" placeholder="Password"
                     class="border p-3 w-full rounded-lg @error('password') border-red-500 @enderror">
                 @error('password')
-                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 
+                <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2
             text-center">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="mb-5">
-                <input type="checkbox" name="remember"><label class=" text-gray-500 text-sm">Mantener mi sesión abierta</label>
+            <div class="mb-5 flex items-center gap-2">
+                <input type="checkbox" name="remember">
+                <label class=" text-gray-500 text-sm">Mantener mi sesión abierta</label>
             </div>
             <input type="submit" value="Iniciar Sesión"
                 class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg">
